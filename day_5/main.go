@@ -44,8 +44,8 @@ func SortStr(str []string) int {
 func Vow3ls(s string) bool {
 	vowels := "aeiou"
 	count := 0
-	for _, v := range vowels {
-		if strings.ContainsRune(s, v) {
+	for _, v := range s {
+		if strings.ContainsRune(vowels, v) {
 			count++
 		}
 	}
