@@ -27,7 +27,7 @@ func main() {
 		return
 	}
 
-	validCount := SortStr(data)
+	validCount := SortStr2(data)
 	fmt.Println(validCount)
 }
 
@@ -69,4 +69,38 @@ func Ban(s string) bool {
 		}
 	}
 	return true
+}
+
+func SortStr2(str []string) int {
+	count := 0
+	for _, s := range str {
+		if UniPaire(s) && B3tween(s) {
+			count++
+		}
+	}
+	return count
+}
+
+func B3tween(s string) bool {
+	for i := 0; i < len(s)-2; i++ {
+		if s[i] == s[i+2] {
+			return true
+		}
+	}
+	return false
+}
+
+func UniPaire(s string) bool {
+	m := make(map[string]int)
+	for i := 0; i < len(s)-1; i++ {
+		p := s[i : i+2]
+		if _, exists := m[p]; exists {
+			if i > m[p]+1 {
+				return true
+			}
+		} else {
+			m[p] = i
+		}
+	}
+	return false
 }
